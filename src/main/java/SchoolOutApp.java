@@ -13,22 +13,21 @@ public class SchoolOutApp {
 
     public static void  main (String[] args){
 
-       // PersonBusiness personBusiness=new PersonBusiness();
+       PersonBusiness personBusiness=new PersonBusiness();
 
-       /* Person p=new Person()
-                .setFirstName("Leidio")
-                .setLastName("Krodji")
+        Person p=new Person()
+                .setFirstName("Alpha")
+                .setLastName("Diallo")
                 .setGender(Gender.M);
-        personBusiness.save(p);*/
+        personBusiness.savePerson(p);
       //  Person person=personBusiness.getById(7);
-       // personBusiness.delete(person);
-       // List<Person> people= personBusiness.getAll();
+       // personBusiness.deletePerson(person);
+        List<Person> people= personBusiness.getAllPeople();
       //  people.forEach(System.out::println);
 
-
-        PersonBusiness personBusiness=new PersonBusiness();
-       Person person1= personBusiness.getById(8);
-        System.out.println(person1.toString());
+        //PersonBusiness personBusiness=new PersonBusiness();
+      // Person person1= personBusiness.getPersonById(8);
+      //  System.out.println(person1.toString());
 
 
 
