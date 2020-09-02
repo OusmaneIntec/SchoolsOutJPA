@@ -20,7 +20,7 @@ public class SchoolOutApp {
                 .setLastName("Diallo")
                 .setGender(Gender.M);
         personBusiness.savePerson(p);
-      //  Person person=personBusiness.getById(7);
+      //  Person person=personBusiness.getPersonById(7);
        // personBusiness.deletePerson(person);
         List<Person> people= personBusiness.getAllPeople();
       //  people.forEach(System.out::println);
