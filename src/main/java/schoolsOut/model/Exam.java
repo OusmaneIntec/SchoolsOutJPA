@@ -6,7 +6,7 @@ import java.time.LocalDate;
 public class Exam {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String name;
     @Lob
     private String description;
@@ -17,6 +17,10 @@ public class Exam {
     private Module module;
 
     public Exam() {
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getName() {

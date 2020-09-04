@@ -10,17 +10,17 @@ import java.util.List;
 
 public class ExamRepository  {
 
-    private EntityManagerFactory emf;
     private EntityManager em;
+    private EntityManagerProvider emp;
 
     public ExamRepository() {
-        this.emf= Persistence.createEntityManagerFactory("datasource");
-        this.em = emf.createEntityManager();
+        emp=new EntityManagerProvider();
+        em=emp.getEM();
     }
 
 
 
-    public Exam getExamById(int id) {
+    public Exam getExamById(Long id) {
         return em.find(Exam.class, id);
     }
 

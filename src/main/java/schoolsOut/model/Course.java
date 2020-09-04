@@ -6,19 +6,23 @@ import java.util.List;
 public class Course {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String name;
     @Lob
     private  String description;
     private String code;
     private String imageURL;
     private Boolean active;
-    @OneToMany(mappedBy = "course",cascade =CascadeType.ALL)
+    @OneToMany(mappedBy = "course",cascade ={CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REMOVE})
     private List<Person> people;
     @OneToMany(mappedBy = "course",cascade = CascadeType.ALL)
     private List<Module> modules;
 
     public Course() {
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getName() {

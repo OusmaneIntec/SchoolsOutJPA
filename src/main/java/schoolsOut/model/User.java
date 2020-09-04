@@ -1,9 +1,6 @@
 package schoolsOut.model;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
 public class User {
@@ -11,7 +8,7 @@ public class User {
     private String login;
     private String passwordhash;
     private Boolean active;
-    @OneToOne(mappedBy = "user",cascade = {CascadeType.PERSIST,CascadeType.MERGE,CascadeType.REFRESH})
+    @OneToOne(mappedBy = "user",cascade = CascadeType.MERGE)
     private Person person;
 
     public User() {

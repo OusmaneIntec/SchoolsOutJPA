@@ -3,22 +3,22 @@ package schoolsOut.repository;
 import schoolsOut.model.Person;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import java.util.List;
 
 public class PersonRepository {
 
     private EntityManager em;
-    private EntityManagerFactory emf;
+   private EntityManagerProvider emp;
+
 
     public PersonRepository() {
-        this.emf = Persistence.createEntityManagerFactory("datasource");
-        this.em = emf.createEntityManager();
+     emp=new EntityManagerProvider();
+     em=emp.getEM();
     }
 
 
-    public Person getPersonById(int id) {
+    public Person getPersonById(Long id) {
+
         return em.find(Person.class, id);
     }
     public List<Person> getAllPeople() {
@@ -27,14 +27,18 @@ public class PersonRepository {
 
     public Person savePerson(Person person) {
         em.getTransaction().begin();
-        if(person.getId()==null) {
+        if (person.getId() == null) {
             em.persist(person);
-        }else {
+        } else {
             em.merge(person);
         }
+
         em.getTransaction().commit();
         return person;
+
     }
+
+
 
     public void deletePerson(Person person) {
         em.getTransaction().begin();

@@ -7,16 +7,16 @@ import javax.persistence.Persistence;
 import java.util.List;
 
 public class ModuleRepository {
-    private EntityManagerFactory emf;
     private EntityManager em;
+    private EntityManagerProvider emp;
 
     public ModuleRepository() {
-        this.emf= Persistence.createEntityManagerFactory("datasource");
-        this.em = emf.createEntityManager();
+       emp=new EntityManagerProvider();
+       em=emp.getEM();
     }
 
 
-    public Module getModuleById(int id) {
+    public Module getModuleById(Long id) {
         return em.find(Module.class, id);
     }
 

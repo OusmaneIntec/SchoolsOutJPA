@@ -9,17 +9,17 @@ import javax.persistence.Persistence;
 import java.util.List;
 
 public class CourseRepository  {
-    private EntityManagerFactory emf;
     private EntityManager em;
+    private EntityManagerProvider emp;
 
     public CourseRepository() {
-        this.emf= Persistence.createEntityManagerFactory("datasource");
-        this.em = emf.createEntityManager();
+        emp=new EntityManagerProvider();
+        em=emp.getEM();
     }
 
 
 
-    public Course getCourseById(int id) {
+    public Course getCourseById(Long id) {
         return em.find(Course.class, id);
     }
 
@@ -30,7 +30,11 @@ public class CourseRepository  {
 
     public Course saveCourse(Course course) {
         em.getTransaction().begin();
-        em.persist(course);
+        if(course.getId()==null) {
+            em.persist(course);
+        }else {
+            em.merge(course);
+        }
         em.getTransaction().commit();
         return course ;
     }

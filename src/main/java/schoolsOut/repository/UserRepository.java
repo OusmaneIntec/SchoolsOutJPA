@@ -7,11 +7,11 @@ import java.util.List;
 
 public class UserRepository {
     private EntityManager em;
-    private EntityManagerFactory emf;
+    private EntityManagerProvider emp;
 
     public UserRepository() {
-        this.emf = Persistence.createEntityManagerFactory("datasource");
-        this.em = emf.createEntityManager();
+          emp=new EntityManagerProvider();
+          em=emp.getEM();
     }
 
 

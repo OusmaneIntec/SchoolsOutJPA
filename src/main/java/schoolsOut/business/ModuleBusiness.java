@@ -8,7 +8,7 @@ import java.util.List;
 public class ModuleBusiness {
     ModuleRepository moduleRepository = new ModuleRepository();
 
-    public Module getModuleById(int id) {
+    public Module getModuleById(Long id) {
 
         return moduleRepository.getModuleById(id);
     }

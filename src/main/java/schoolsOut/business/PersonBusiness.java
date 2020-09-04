@@ -7,7 +7,7 @@ import java.util.List;
 public class PersonBusiness {
     PersonRepository personRepository = new PersonRepository();
 
-    public Person getPersonById(int id) {
+    public Person getPersonById(Long id) {
         return personRepository.getPersonById(id);
     }
 

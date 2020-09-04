@@ -7,7 +7,7 @@ import java.util.List;
 public class ExamBusiness {
     ExamRepository examRepository = new ExamRepository();
 
-    public Exam getExamById(int id) {
+    public Exam getExamById(Long id) {
 
         return examRepository.getExamById(id);
     }

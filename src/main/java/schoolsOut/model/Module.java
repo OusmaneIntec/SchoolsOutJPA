@@ -6,16 +6,20 @@ import java.util.List;
 public class Module {
      @Id
      @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String name;
     @Lob
     private String description;
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.PERSIST,CascadeType.MERGE})
     private  Course course;
     @OneToMany(mappedBy = "module", cascade = CascadeType.ALL)
     private List<Exam> exams;
 
      public Module() {
+     }
+
+     public Long getId() {
+         return id;
      }
 
      public String getName() {

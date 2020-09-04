@@ -1,5 +1,8 @@
 import org.hibernate.type.TrueFalseType;
+import schoolsOut.business.CourseBusiness;
 import schoolsOut.business.PersonBusiness;
+import schoolsOut.business.UserBusiness;
+import schoolsOut.model.Course;
 import schoolsOut.model.Gender;
 import schoolsOut.model.Person;
 import schoolsOut.model.User;
@@ -11,23 +14,21 @@ import java.util.List;
 
 public class SchoolOutApp {
 
-    public static void  main (String[] args){
+    public static void main(String[] args) {
+       PersonBusiness personBusiness =new PersonBusiness();
+       Person person=personBusiness.getPersonById(18L);
+        User user= new User()
+                .setLogin("ousmaneDi")
+                .setPasswordhash("intec-123")
+                .setActive(true)
+                .setPerson(person);
+       person.setUser(user);
+       personBusiness.savePerson(person);
 
-       PersonBusiness personBusiness=new PersonBusiness();
 
-        Person p=new Person()
-                .setFirstName("Alpha")
-                .setLastName("Diallo")
-                .setGender(Gender.M);
-        personBusiness.savePerson(p);
-      //  Person person=personBusiness.getPersonById(7);
-       // personBusiness.deletePerson(person);
-        List<Person> people= personBusiness.getAllPeople();
-      //  people.forEach(System.out::println);
 
-        //PersonBusiness personBusiness=new PersonBusiness();
-      // Person person1= personBusiness.getPersonById(8);
-      //  System.out.println(person1.toString());
+
+
 
 
 

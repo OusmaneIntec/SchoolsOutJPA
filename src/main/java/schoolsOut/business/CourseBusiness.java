@@ -7,7 +7,7 @@ import java.util.List;
 public class CourseBusiness {
     CourseRepository courseRepository = new CourseRepository();
 
-    public Course getCourseById(int id) {
+    public Course getCourseById(Long id) {
         return courseRepository.getCourseById(id);
     }
 
